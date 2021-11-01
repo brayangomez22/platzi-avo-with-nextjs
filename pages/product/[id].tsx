@@ -6,7 +6,9 @@ import ProductSummary from '@components/ProductSummary/ProductSummary'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch('https://platzi-avo.vercel.app/api/avo')
+  const response = await fetch(
+    'https://platzi-avo-with-nextjs.vercel.app/api/avo'
+  )
   const { data }: TAPIAvoResponse = await response.json()
 
   const paths = data.map(({ id }) => ({ params: { id } }))
@@ -24,7 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
   const response = await fetch(
-    `https://platzi-avo.vercel.app/api/avo/${params?.id}`
+    `https://platzi-avo-with-nextjs.vercel.app/api/avo/${params?.id}`
   )
   const product = await response.json()
 
